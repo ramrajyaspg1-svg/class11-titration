@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Class 11 Chemistry — Interactive Acid Base Titration — Reference Diagram Layout</title>
+<style>
+:root{
+ --bg:#eef2f7;--card:#fff;--ink:#172033;--muted:#657083;--blue:#2563eb;
+ --glass:#eaf4ff;--pink:#e83e8c;--pink2:#ffd4e7;--line:#b8c3d1;
+}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(135deg,#eef3f9,#fdfcff);color:var(--ink);font-family:Inter,Arial,sans-serif}
+.container{max-width:1180px;margin:auto;padding:24px}
+header{background:linear-gradient(135deg,#132238,#274b72);color:white;border-radius:22px;padding:24px 28px;box-shadow:0 12px 35px #1d355722}
+h1{margin:0;font-size:30px}.subtitle{margin-top:8px;opacity:.86}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}.badge{padding:7px 11px;border-radius:99px;background:#ffffff18;border:1px solid #ffffff33;font-size:12px}
+.layout{display:grid;grid-template-columns:1.55fr .9fr;gap:18px;margin-top:18px}
+.card{background:#ffffffd9;border:1px solid #dbe2eb;border-radius:20px;padding:18px;box-shadow:0 8px 28px #24324d0d}
+.scene{border-radius:16px;background:linear-gradient(#f8fcff,#f7f7fa);border:1px solid #dce4ee;overflow:hidden}
+svg{width:100%;display:block}
+.controls{margin-top:14px;padding:16px;border-radius:15px;background:#f8fafc;border:1px solid #e1e7ef}
+.range{width:100%;accent-color:#2563eb;height:36px}
+.scaleLabels{display:flex;justify-content:space-between;font-weight:700;font-size:12px;color:#596578}
+.stage{font-size:21px;font-weight:800;margin-bottom:8px}
+.explain{color:#4d596b;line-height:1.55}
+.metrics{margin-top:15px;display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.metric{padding:11px;border-radius:12px;background:#f6f8fb;border:1px solid #e3e8ef}.metric b{display:block;font-size:12px;color:#687589}.metric span{font-size:18px;font-weight:800}
+.eq{margin-top:14px;background:#101827;color:#fff;border-radius:12px;padding:12px;text-align:center;font-family:monospace}
+.note{margin-top:12px;padding:12px;border-radius:12px;background:#fff5d9;border-left:4px solid #f0ad00;font-size:13px;line-height:1.45}
+.sectionTitle{font-size:19px;font-weight:800;margin:22px 0 10px}
+table{width:100%;border-collapse:collapse;font-size:13px;background:white;border-radius:12px;overflow:hidden}
+th,td{padding:9px;border:1px solid #dce2e9;text-align:center}th{background:#edf3fa}
+.chapter{margin-top:18px}.chapters{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.ch{padding:11px 8px;border-radius:12px;background:#f4f7fb;border:1px solid #dce3ed;text-align:center;font-size:12px}.ch.active{background:#dceaff;border-color:#7aa7ef;font-weight:800}
+.quiz{display:grid;gap:12px}
+.q{padding:15px;border:1px solid #d7dfeb;border-radius:14px;background:#ffffff;box-shadow:0 3px 12px rgba(30,50,80,.06)}
+.q b{display:block;color:#172033;margin-bottom:4px}
+.q button{
+ margin:8px 8px 0 0;
+ padding:10px 16px;
+ min-width:150px;
+ border-radius:10px;
+ border:2px solid #7d9bc9;
+ background:#edf4ff;
+ color:#172033;
+ font-family:inherit;
+ font-size:14px;
+ font-weight:700;
+ cursor:pointer;
+ box-shadow:0 2px 5px rgba(37,99,235,.10);
+ transition:all .18s ease;
+}
+.q button:hover{
+ background:#dbeafe;
+ border-color:#2563eb;
+ transform:translateY(-1px);
+}
+.q button:active{transform:translateY(0)}
+.answer{
+ margin-top:9px;
+ min-height:20px;
+ font-size:13px;
+ font-weight:800;
+}
+.reset{margin-top:10px;border:0;border-radius:10px;padding:9px 14px;background:#172033;color:white;font-weight:700;cursor:pointer}
+.small{font-size:12px;color:#6b7687}
+@media(max-width:820px){.layout{grid-template-columns:1fr}.chapters{grid-template-columns:repeat(2,1fr)}h1{font-size:24px}.container{padding:12px}}
+
+.procedureGrid{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}
+.stepList{display:grid;gap:8px}
+.stepBtn{width:100%;text-align:left;border:1px solid #d8e0eb;background:#f7f9fc;color:#172033;border-radius:12px;padding:11px 13px;font:inherit;cursor:pointer;transition:.18s}
+.stepBtn:hover,.stepBtn.active{background:#e8f2ff;border-color:#6f9fe8;box-shadow:0 4px 12px rgba(37,99,235,.10)}
+.stepBtn strong{display:inline-block;min-width:34px}
+.sideVisual{background:#f8fbff;border:1px solid #dce4ee;border-radius:15px;padding:12px}
+.sideVisual svg{height:auto}
+.why{margin-top:12px;background:#fff8e8;border:1px solid #f0d79a;border-radius:14px;padding:13px}
+.why b{color:#8a5a00}
+.readingBox{margin-top:14px;padding:14px;border-radius:14px;background:#f6f9fd;border:1px solid #dbe3ed}
+.readingRow{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:9px}
+.readingCell{background:#fff;border:1px solid #dce3ed;border-radius:10px;padding:9px;font-size:13px}.readingCell b{display:block;font-size:11px;color:#687589;margin-bottom:3px}
+.highlight{filter:drop-shadow(0 0 7px rgba(37,99,235,.9));stroke:#2563eb!important}
+@media(max-width:820px){.procedureGrid{grid-template-columns:1fr}.readingRow{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<h1>🧪 Interactive Acid–Base Titration</h1>
+<div class="subtitle">Class 11 Chemistry • Standard oxalic acid vs NaOH • Phenolphthalein endpoint</div>
+<div class="badges"><span class="badge">ONE master slider</span><span class="badge">Realistic burette setup</span><span class="badge">Drop-by-drop animation</span><span class="badge">Observation table</span><span class="badge">Quick quiz</span></div>
+</header>
+
+<div class="layout">
+<section class="card">
+<div class="scene">
+<svg viewBox="0 0 900 600">
+<defs>
+ <linearGradient id="glass" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#e8f7ff" stop-opacity=".75"/><stop offset=".5" stop-color="#fff" stop-opacity=".25"/><stop offset="1" stop-color="#cbeaff" stop-opacity=".75"/></linearGradient>
+ <linearGradient id="liq" x1="0" y1="0" x2="0" y2="1"><stop id="liqTop" stop-color="#fff"/><stop id="liqBot" offset="1" stop-color="#f5e8ed"/></linearGradient>
+ <filter id="shadow"><feDropShadow dx="0" dy="5" stdDeviation="5" flood-opacity=".15"/></filter>
+</defs>
+<rect width="900" height="600" fill="#f8fbff"/>
+
+<!-- laboratory stand -->
+<line x1="92" y1="65" x2="92" y2="530" stroke="#4b5563" stroke-width="11"/>
+<rect x="38" y="520" width="125" height="18" rx="8" fill="#374151"/>
+<line x1="92" y1="120" x2="235" y2="120" stroke="#4b5563" stroke-width="7"/>
+<rect x="215" y="105" width="35" height="31" rx="7" fill="#64748b"/>
+<circle cx="232" cy="121" r="8" fill="#cbd5e1"/>
+
+<!-- realistic burette -->
+<rect id="buretteBody" x="240" y="45" width="64" height="355" rx="10" fill="url(#glass)" stroke="#475569" stroke-width="3" filter="url(#shadow)"/>
+<rect id="naohLiquid" x="245" y="50" width="54" height="345" rx="7" fill="#b9ddf7" opacity=".78"/>
+<path d="M247 60 Q272 51 297 60" fill="none" stroke="#fff" stroke-width="3" opacity=".8"/>
+<!-- scale ticks: 0 top, readings increase downward -->
+<g stroke="#334155" stroke-width="1.5">
+<line x1="296" y1="55" x2="321" y2="55"/><line x1="301" y1="65" x2="315" y2="65"/>
+<line x1="296" y1="75" x2="321" y2="75"/><line x1="301" y1="85" x2="315" y2="85"/>
+<line x1="296" y1="95" x2="321" y2="95"/><line x1="301" y1="105" x2="315" y2="105"/>
+<line x1="296" y1="115" x2="321" y2="115"/><line x1="301" y1="125" x2="315" y2="125"/>
+<line x1="296" y1="135" x2="321" y2="135"/><line x1="301" y1="145" x2="315" y2="145"/>
+<line x1="296" y1="155" x2="321" y2="155"/><line x1="301" y1="165" x2="315" y2="165"/>
+<line x1="296" y1="175" x2="321" y2="175"/><line x1="301" y1="185" x2="315" y2="185"/>
+<line x1="296" y1="195" x2="321" y2="195"/><line x1="301" y1="205" x2="315" y2="205"/>
+<line x1="296" y1="215" x2="321" y2="215"/><line x1="301" y1="225" x2="315" y2="225"/>
+<line x1="296" y1="235" x2="321" y2="235"/><line x1="301" y1="245" x2="315" y2="245"/>
+<line x1="296" y1="255" x2="321" y2="255"/><line x1="301" y1="265" x2="315" y2="265"/>
+<line x1="296" y1="275" x2="321" y2="275"/><line x1="301" y1="285" x2="315" y2="285"/>
+<line x1="296" y1="295" x2="321" y2="295"/><line x1="301" y1="305" x2="315" y2="305"/>
+<line x1="296" y1="315" x2="321" y2="315"/><line x1="301" y1="325" x2="315" y2="325"/>
+<line x1="296" y1="335" x2="321" y2="335"/><line x1="301" y1="345" x2="315" y2="345"/>
+</g>
+<g font-size="12" fill="#172033" font-weight="700">
+<text x="326" y="59">0</text><text x="326" y="109">5</text><text x="326" y="159">10</text>
+<text x="326" y="209">15</text><text x="326" y="259">20</text><text x="326" y="309">25</text>
+<text x="326" y="359">30</text>
+</g>
+<text x="252" y="32" font-size="15" font-weight="800" fill="#172033">BURETTE — NaOH</text>
+
+<!-- stopcock and tip -->
+<rect x="232" y="397" width="80" height="23" rx="6" fill="#475569"/>
+<circle cx="272" cy="408" r="10" fill="#cbd5e1" stroke="#334155" stroke-width="2"/>
+<line x1="272" y1="419" x2="272" y2="450" stroke="#475569" stroke-width="5"/>
+<path d="M264 450 L280 450 L276 468 L268 468 Z" fill="#64748b"/>
+<!-- short vertical delivery path: burette tip is exactly above flask neck -->
+<line x1="272" y1="468" x2="272" y2="270" stroke="#9fb7c9" stroke-width="2" stroke-dasharray="4 5" opacity=".45"/>
+
+<!-- conical flask exactly below burette -->
+<!-- TITRATION FLASK: centered directly under the burette tip, matching the reference diagram -->
+<!-- conical flask sits physically BELOW the delivery tip, with no overlap with the burette -->
+<path d="M225 485 L319 485 L307 555 Q272 582 237 555 Z" fill="url(#glass)" stroke="#475569" stroke-width="4" filter="url(#shadow)"/>
+<path id="flaskNeck" d="M248 485 L248 455 Q272 444 296 455 L296 485" fill="url(#glass)" stroke="#475569" stroke-width="4"/>
+<path id="flaskLiquid" d="M234 520 Q272 508 310 520 L304 552 Q272 575 240 552 Z" fill="url(#liq)" opacity=".9"/>
+<ellipse id="surface" cx="272" cy="520" rx="38" ry="10" fill="#f8e9ef" opacity=".9"/>
+<!-- swirl lines -->
+<g id="swirl" fill="none" stroke="#ffffff" stroke-width="2.5" opacity="0">
+ <path d="M242 535 Q272 550 302 535"/><path d="M246 548 Q272 560 298 548"/>
+</g>
+
+<!-- animated drops -->
+<g id="dropGroup"></g>
+
+<text x="385" y="485" font-size="17" font-weight="800" fill="#172033">CONICAL FLASK</text>
+<text x="385" y="507" font-size="15" fill="#172033">25 mL oxalic acid</text>
+<text x="385" y="529" font-size="15" fill="#172033">+ phenolphthalein</text>
+<text id="endpointText" x="385" y="552" font-size="16" font-weight="800" fill="#c02667"></text>
+</svg>
+</div>
+
+<div class="controls">
+<div class="scaleLabels"><span>START</span><span id="sliderPct">0%</span><span>ENDPOINT</span></div>
+<input id="masterSlider" class="range" type="range" min="0" max="100" value="0" step="0.1">
+<div style="text-align:center;margin-top:5px;color:#64748b;font-size:13px">Drag slowly — every part of the experiment follows this one slider.</div>
+<button class="reset" onclick="resetSim()">↺ Reset</button>
+</div>
+</section>
+
+<aside class="card">
+<div class="stage" id="stage">1. Setup</div>
+<div class="explain" id="explain">The burette is filled with NaOH and the flask is placed directly below it.</div>
+
+<div class="metrics">
+<div class="metric"><b>NaOH delivered</b><span id="delivered">0.0 mL</span></div>
+<div class="metric"><b>Current reading</b><span id="currentRead">0.0 mL</span></div>
+<div class="metric"><b>Flask colour</b><span id="colour">Colourless</span></div>
+<div class="metric"><b>Stopcock</b><span id="stopcock">Closed</span></div>
+</div>
+
+<div class="eq">H₂C₂O₄ + 2NaOH → Na₂C₂O₄ + 2H₂O</div>
+<div class="note" id="tip">Tip: add only a few drops of phenolphthalein. It is colourless in the acidic solution.</div>
+
+<div class="sectionTitle">Experiment Chapters</div>
+<div class="chapters">
+<div class="ch active" id="c1">Setup</div><div class="ch" id="c2">First drops</div>
+<div class="ch" id="c3">Regular titration</div><div class="ch" id="c4">Near endpoint</div><div class="ch" id="c5">Final reading</div>
+</div>
+</aside>
+</div>
+
+<section class="card" style="margin-top:18px">
+<div class="sectionTitle">Actual Experiment — Side Procedure</div>
+<div class="small" style="margin-bottom:12px">Click a step to highlight the relevant part of the apparatus. The main experiment animation remains controlled only by the master slider.</div>
+<div class="procedureGrid">
+<div class="stepList">
+<button class="stepBtn active" onclick="selectStep(1,this)"><strong>01 →</strong> Rinse &amp; fill burette</button>
+<button class="stepBtn" onclick="selectStep(2,this)"><strong>02 →</strong> Pipette 25 mL oxalic acid</button>
+<button class="stepBtn" onclick="selectStep(3,this)"><strong>03 →</strong> Transfer into conical flask</button>
+<button class="stepBtn" onclick="selectStep(4,this)"><strong>04 →</strong> Add 2–3 drops phenolphthalein</button>
+<button class="stepBtn" onclick="selectStep(5,this)"><strong>05 →</strong> Titrate with NaOH</button>
+<button class="stepBtn" onclick="selectStep(6,this)"><strong>06 →</strong> Slow down near endpoint</button>
+<button class="stepBtn" onclick="selectStep(7,this)"><strong>07 →</strong> Stop at faint permanent pink</button>
+<button class="stepBtn" onclick="selectStep(8,this)"><strong>08 →</strong> Note final reading</button>
+</div>
+<div>
+<div class="sideVisual">
+<div style="font-weight:800;margin-bottom:6px">Pipette transfer — static guide</div>
+<svg viewBox="0 0 520 190" aria-label="Pipette transferring oxalic acid to conical flask">
+<rect width="520" height="190" rx="12" fill="#f8fbff"/>
+<text x="18" y="25" font-size="13" font-weight="800" fill="#172033">25 mL oxalic acid</text>
+<path d="M55 55 L275 128" stroke="#64748b" stroke-width="9" stroke-linecap="round"/>
+<path d="M55 55 L275 128" stroke="#e8f7ff" stroke-width="5" stroke-linecap="round"/>
+<line x1="150" y1="87" x2="165" y2="92" stroke="#172033" stroke-width="2"/>
+<text x="118" y="77" font-size="12" fill="#172033">25 mL mark</text>
+<circle cx="54" cy="55" r="15" fill="#dbeafe" stroke="#475569" stroke-width="2"/>
+<path d="M275 128 L289 133" stroke="#475569" stroke-width="4"/>
+<path d="M335 92 L335 125 L310 163 Q335 178 360 163 L335 125 Z" fill="#eaf4ff" stroke="#475569" stroke-width="3"/>
+<path d="M316 151 Q335 145 354 151 L350 164 Q335 171 320 164 Z" fill="#d8efff" opacity=".9"/>
+<text x="306" y="184" font-size="12" fill="#172033">Conical flask</text>
+<path d="M289 133 C300 143 305 145 315 151" fill="none" stroke="#8fc7ec" stroke-width="3" stroke-dasharray="4 4"/>
+<text x="185" y="115" font-size="12" font-weight="700" fill="#2563eb">transfer</text>
+</svg>
+<div class="small">Educational side illustration only — no animation.</div>
+</div>
+<div class="why"><b>Why?</b><br><br><b>Why use phenolphthalein?</b><br>It helps detect the endpoint through the colour change.<br><br><b>Why add dropwise near endpoint?</b><br>One extra drop can noticeably affect the final titre.</div>
+</div></div>
+</section>
+
+<section class="card" style="margin-top:18px">
+<div class="sectionTitle">Observation Table</div>
+<div class="small">Example observation values — replace with your actual readings.</div>
+<table>
+<thead><tr><th>Trial</th><th>Initial burette reading (mL)</th><th>Final burette reading (mL)</th><th>NaOH used (mL)</th></tr></thead>
+<tbody>
+<tr><td>Rough</td><td>0.0</td><td>20.4</td><td>20.4</td></tr>
+<tr><td>I</td><td>0.0</td><td>19.8</td><td>19.8</td></tr>
+<tr><td>II</td><td>0.0</td><td>19.9</td><td>19.9</td></tr>
+<tr><td>III</td><td>0.0</td><td>19.8</td><td>19.8</td></tr>
+<tr><th colspan="3">Concordant / average titre</th><th>19.8–19.9 mL</th></tr>
+</tbody>
+</table>
+<div class="note">Important: a burette normally has 0 near the top and readings increase downward. Read the lower meniscus at eye level. The table above is only an example; do not copy it as your personal experimental observation.</div>
+</section>
+
+<section class="card" style="margin-top:18px">
+<div class="sectionTitle">Endpoint → Reading → Calculation</div>
+<div class="readingBox"><b>At the endpoint, record:</b><div class="readingRow"><div class="readingCell"><b>Initial burette reading</b><span id="initialReadingBox">___ mL</span></div><div class="readingCell"><b>Final burette reading</b><span id="finalReadingBox">___ mL</span></div><div class="readingCell"><b>Volume used</b><span id="volumeUsedBox">Final − Initial</span></div></div></div>
+<div class="eq">2M₁V₁ = M₂V₂</div>
+<div class="small" style="margin-top:8px">The burette readings matter because the titre volume is obtained from the change in reading.</div>
+</section>
+
+<section class="card" style="margin-top:18px">
+<div class="sectionTitle">Understand the Endpoint</div>
+<p><b>Before endpoint:</b> added NaOH reacts with oxalic acid, so the pink colour does not persist.</p>
+<p><b>Near endpoint:</b> add NaOH very slowly, one drop at a time, while swirling.</p>
+<p><b>Endpoint:</b> the solution becomes a <b>very faint pink that persists</b>. Do not aim for dark pink.</p>
+<p><b>Calculation:</b> for diprotic oxalic acid, use <b>2M₁V₁ = M₂V₂</b> when M₁ is oxalic acid molarity and M₂ is NaOH molarity.</p>
+</section>
+
+<section class="card" style="margin-top:18px">
+<div class="sectionTitle">Quick Check Quiz</div><div class="small" style="margin-bottom:8px">Choose an answer — the buttons are intentionally high-contrast and clearly outlined.</div>
+<div class="quiz">
+<div class="q"><b>1. Where should the titration flask be placed?</b><br>
+<button onclick="quiz(this,true)">Directly under the burette tip</button><button onclick="quiz(this,false)">Beside the burette</button><div class="answer"></div></div>
+<div class="q"><b>2. What is the endpoint colour with phenolphthalein?</b><br>
+<button onclick="quiz(this,true)">Very faint permanent pink</button><button onclick="quiz(this,false)">Dark blue</button><div class="answer"></div></div>
+<div class="q"><b>3. What should you do near the endpoint?</b><br>
+<button onclick="quiz(this,true)">Add dropwise and swirl</button><button onclick="quiz(this,false)">Open the stopcock fully</button><div class="answer"></div></div>
+<div class="q"><b>4. How is titre volume obtained?</b><br>
+<button onclick="quiz(this,true)">Final reading − initial reading</button><button onclick="quiz(this,false)">Initial reading − final reading</button><div class="answer"></div></div>
+</div>
+</section>
+</div>
+
+<script>
+const slider=document.getElementById("masterSlider");
+const pct=document.getElementById("sliderPct");
+const stage=document.getElementById("stage"), explain=document.getElementById("explain");
+const delivered=document.getElementById("delivered"), currentRead=document.getElementById("currentRead");
+const colour=document.getElementById("colour"), stopcock=document.getElementById("stopcock");
+const tip=document.getElementById("tip"), liquid=document.getElementById("flaskLiquid");
+const surface=document.getElementById("surface"), naoh=document.getElementById("naohLiquid");
+const drops=document.getElementById("dropGroup"), swirl=document.getElementById("swirl"), endpointText=document.getElementById("endpointText");
+
+function update(){
+ const p=+slider.value;
+ pct.textContent=Math.round(p)+"%";
+ let v=0, s, e, tipText, flow="Closed";
+ if(p<8){s="START — Setup";e="NaOH is in the burette and the conical flask is directly below the burette tip.";tipText="Next: begin the titration."}
+ else if(p<22){v=(p-8)/14*3;s="Setup → First drops";e="The stopcock opens and the first small amounts of NaOH enter the flask.";tipText="Observe the first drops.";flow="Open — drops"}
+ else if(p<62){v=3+(p-22)/40*17;s="Regular titration";e="NaOH is added while the flask is swirled. The solution gradually approaches the endpoint.";tipText="Keep swirling and watch the colour.";flow="Slow flow"}
+ else if(p<84){v=20+(p-62)/22*4;s="Near endpoint";e="Reduce the rate and add NaOH one drop at a time.";tipText="Near the endpoint, control each drop carefully.";flow="One drop at a time"}
+ else if(p<94){v=24+(p-84)/10*.8;s="Faint pink endpoint";e="A very faint pink appears and persists after swirling. Stop adding NaOH.";tipText="Endpoint reached — do not make it dark pink.";flow="Stopped"}
+ else{v=24.8;s="Final reading";e="Read the lower meniscus at eye level and record the final burette reading.";tipText="Volume used = final reading − initial reading.";flow="Stopped"}
+
+ delivered.textContent=v.toFixed(1)+" mL";currentRead.textContent=v.toFixed(1)+" mL";stopcock.textContent=flow;
+ document.getElementById("initialReadingBox").textContent="___ mL"; document.getElementById("finalReadingBox").textContent=(p>=94? v.toFixed(1)+" mL":"___ mL"); document.getElementById("volumeUsedBox").textContent=(p>=94? v.toFixed(1)+" − initial":"Final − Initial");
+ stage.textContent=s;explain.textContent=e;tip.textContent=tipText;
+
+ let endpoint=Math.max(0,Math.min(1,(v-21)/4));
+ let pink=Math.round(246-70*endpoint), pink2=Math.round(235-95*endpoint), pink3=Math.round(242-55*endpoint);
+ const fill=`rgb(${pink},${pink2},${pink3})`;
+ liquid.setAttribute("fill",fill);surface.setAttribute("fill",fill);
+ if(v>=24.8){colour.textContent="Faint permanent pink";colour.style.color="#c02667";endpointText.textContent="✓ ENDPOINT"}
+ else if(v>=21){colour.textContent="Pink appears briefly";colour.style.color="#d45a87";endpointText.textContent=""}
+ else{colour.textContent="Colourless";colour.style.color="#172033";endpointText.textContent=""}
+
+ let h=Math.max(35,345-v*6);
+ naoh.setAttribute("height",h);
+ naoh.setAttribute("y",50+(345-h));
+
+ drops.innerHTML="";
+ if(v>0 && v<25){
+   const n=Math.min(7,Math.max(1,Math.floor(v/2.5)));
+   for(let i=0;i<n;i++){
+     const c=document.createElementNS("http://www.w3.org/2000/svg","circle");
+     c.setAttribute("cx",272);c.setAttribute("cy",475-(i*12));c.setAttribute("r",3.7);c.setAttribute("fill","#8ac6ee");
+     drops.appendChild(c);
+   }
+ }
+ swirl.setAttribute("opacity",v>5 && v<25 ? ".75":"0");
+ document.querySelectorAll(".ch").forEach(x=>x.classList.remove("active"));
+ if(p<10)document.getElementById("c1").classList.add("active");
+ else if(p<20)document.getElementById("c2").classList.add("active");
+ else if(p<78)document.getElementById("c3").classList.add("active");
+ else if(p<95)document.getElementById("c4").classList.add("active");
+ else document.getElementById("c5").classList.add("active");
+}
+slider.addEventListener("input",update);
+function resetSim(){slider.value=0;update()}
+
+function clearHighlights(){document.querySelectorAll("#buretteBody,#naohLiquid,#flaskNeck,#flaskLiquid,#surface,#swirl").forEach(el=>el.classList.remove("highlight"));}
+function selectStep(n,btn){document.querySelectorAll(".stepBtn").forEach(b=>b.classList.remove("active"));btn.classList.add("active");clearHighlights();let ids=[];if(n===1)ids=["buretteBody","naohLiquid"];if(n===2)ids=["flaskNeck","flaskLiquid"];if(n===3)ids=["flaskNeck","flaskLiquid"];if(n===4)ids=["flaskLiquid","surface"];if(n===5)ids=["buretteBody","naohLiquid","flaskLiquid"];if(n===6)ids=["naohLiquid","flaskLiquid","surface"];if(n===7)ids=["flaskLiquid","surface"];if(n===8)ids=["buretteBody"];ids.forEach(id=>document.getElementById(id)?.classList.add("highlight"));}
+function quiz(btn,ok){const a=btn.parentElement.querySelector(".answer");a.textContent=ok?"✓ Correct — good!":"✗ Not quite — review the explanation above.";a.style.color=ok?"#15803d":"#b91c1c"}
+update();
+</script>
+</body>
+</html>
